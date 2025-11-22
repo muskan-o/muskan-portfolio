@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Muskan Agarwal | Software Quality Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Muskan Agarwal, a Software Quality Engineer specialized in testing.">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-light: #1e293b;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+    }
+    :root.light {
+      --bg: #f3f4f6;
+      --bg-light: #ffffff;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #020617, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    :root.light body {
+      background: #f3f4f6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    /* ==== NAVBAR ==== */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.16), rgba(15, 23, 42, 0.9));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+      padding: 10px 0;
+    }
+    :root.light .navbar {
+      background: rgba(243, 244, 246, 0.92);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlink {
+      font-size: 14px;
+      color: var(--text);
+      opacity: 0.82;
+      position: relative;
+      padding-bottom: 4px;
+      transition: opacity 0.25s ease;
+      white-space: nowrap;
+    }
+    .navlink:hover {
+      opacity: 1;
+    }
+    .navlink::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      transition: width 0.25s ease;
+    }
+    .navlink:hover::after {
+      width: 100%;
+    }
+    .navlink-active::after {
+      width: 100%;
+    }
+
+    .nav-pill {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 14px;
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.75);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    :root.light .nav-pill {
+      background: #ffffff;
+    }
+    .nav-pill:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.35);
+    }
+
+    .nav-pill-resume {
+      background: linear-gradient(135deg, #8b5cf6, #38bdf8);
+      border-color: rgba(148, 163, 184, 0.1);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 4px 18px rgba(56, 189, 248, 0.4);
+    }
+    .nav-pill-resume:hover {
+      box-shadow: 0 10px 26px rgba(56, 189, 248, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+    :root.light .theme-toggle {
+      background: #ffffff;
+    }
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.35);
+    }
+
+    /* ==== HERO ==== */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 56px;
+      margin-top: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 40px);
+      font-weight: 700;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin: 12px 0 8px;
+      color: var(--muted);
+      max-width: 480px;
+      font-size: 15px;
+    }
+
+    .hero-typing {
+      font-size: 13px;
+      color: var(--accent);
+      min-height: 20px;
+      margin-bottom: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--accent);
+      animation: cursor-blink 0.7s steps(2) infinite;
+    }
+
+    @keyframes cursor-blink {
+      0%, 50% { border-color: var(--accent); }
+      50.1%, 100% { border-color: transparent; }
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--muted);
+    }
+    :root.light .pill { background: #ffffff; }
+    .pill strong { color: var(--accent); }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #0b1120;
+      font-weight: 500;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.8);
+    }
+    :root.light .btn-outline:hover { background: #e5e7eb; }
+    .btn:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    }
+
+    /* Photo + card */
+
+    .hero-media {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-photo-wrapper {
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      padding: 4px;
+      background: radial-gradient(circle at top, #38bdf8, #a855f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
+      background: #e5e7eb;
+    }
+
+    .hero-card {
+      width: 100%;
+      background: radial-gradient(circle at top left, #1f2937, #020617);
+      border-radius: 16px;
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.8);
+      font-size: 13px;
+    }
+    :root.light .hero-card {
+      background: #ffffff;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+    }
+    .hero-card-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .hero-card-main { font-size: 14px; margin-bottom: 10px; }
+    .hero-tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .hero-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    :root.light .hero-tag { background: #f9fafb; }
+
+    section { margin-bottom: 44px; }
+
+    .section-heading {
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .section-title { font-size: 20px; margin-bottom: 14px; }
+    .section-body {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.06), rgba(15, 23, 42, 0.95));
+      border-radius: 16px;
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+    :root.light .contact-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), #ffffff);
+    }
+    .contact-main { max-width: 520px; }
+    .contact-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .contact-email { font-size: 15px; font-weight: 500; }
+
+    footer {
+      margin-top: 36px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        row-gap: 8px;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-media {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-inner">
+      <div class="brand">MUSKAN AGARWAL · SQE</div>
+      <div class="nav-links">
+        <a href="index.html" class="navlink navlink-active">Home</a>
+        <a href="skills.html" class="navlink">Skills</a>
+        <a href="projects.html" class="navlink">Projects</a>
+        <a href="#contact" class="navlink">Contact</a>
+        <a href="MUSKANAGARWAL-RESUME.pdf"
+           target="_blank"
+           class="nav-pill nav-pill-resume">
+          📄 Resume
+        </a>
+        <button class="theme-toggle" id="themeToggle" type="button">🌙</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <main>
+      <!-- Hero -->
+      <section class="hero reveal">
+        <div>
+          <div class="hero-title">
+            Hi, I'm <span>Muskan Agarwal</span><br />
+            Software Quality Engineer
+          </div>
+          <p class="hero-subtitle">
+            Detail-oriented QA engineer focusing on manual, automation, API and performance testing
+            to deliver reliable, user-friendly applications.
+          </p>
+          <div class="hero-typing" id="typingText"></div>
+          <div class="pill-row">
+            <div class="pill"><strong>Focus:</strong> Manual · Automation · Performance</div>
+            <div class="pill">Web · API · Mobile · DB</div>
+            <div class="pill">Open to QA / SDET roles</div>
+          </div>
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-outline">View Projects</a>
+            <a href="#contact" class="btn">Contact Me ↗</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-photo-wrapper">
+            <img src="muskan_photo.jpg"
+                 alt="Portrait of Muskan Agarwal"
+                 class="hero-photo" />
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-card-label">Snapshot</div>
+            <div class="hero-card-main">
+              I turn requirements into clear test cases, build automation & performance suites,
+              and collaborate with devs to ship stable releases faster.
+            </div>
+            <div class="hero-tag-grid">
+              <div class="hero-tag">Test case design</div>
+              <div class="hero-tag">Framework building</div>
+              <div class="hero-tag">API & DB validation</div>
+              <div class="hero-tag">Monitoring & logs</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="reveal">
+        <div class="section-heading">About</div>
+        <div class="section-title">Who I am</div>
+        <p class="section-body">
+          I am a Software Quality Engineer with experience in manual, automation, API and performance
+          testing. I enjoy breaking complex flows into clear scenarios, designing effective test cases,
+          and using tools like Selenium, Playwright, Appium, JMeter, Postman, SQL and MongoDB to
+          validate applications end-to-end.
+          <br /><br />
+          I am comfortable working in Agile teams, raising and tracking issues in Jira, and using tools
+          like RabbitMQ and Kibana to understand system behaviour behind the UI.
+        </p>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="reveal">
+        <div class="section-heading">Contact</div>
+        <div class="section-title">Let’s work together</div>
+        <div class="contact-box">
+          <div class="contact-main">
+            <div class="contact-label">Email</div>
+            <div class="contact-email">
+              <a href="mailto:agarwalmuskan884@gmail.com">agarwalmuskan884@gmail.com</a>
+            </div>
+
+            <div class="contact-label" style="margin-top: 14px;">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/muskan-agarwal-b9a40a228/"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="
+                  display: inline-block;
+                  padding: 8px 14px;
+                  background: #2563eb;
+                  color: #ffffff;
+                  border-radius: 999px;
+                  font-size: 14px;
+                  font-weight: 500;
+                  text-decoration: none;
+                  margin-top: 4px;
+                  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
+                  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+               "
+               onmouseover="this.style.background='#1d4ed8'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 10px 20px rgba(37,99,235,0.55)'"
+               onmouseout="this.style.background='#2563eb'; this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 14px rgba(37,99,235,0.4)'">
+              🔗 Visit LinkedIn Profile
+            </a>
+
+            <p style="margin-top: 10px; color: var(--muted);">
+              Reach out for opportunities in Software Testing, QA, SDET or performance-focused roles,
+              or to collaborate on projects that need strong testing.
+            </p>
+          </div>
+          <div>
+            <a href="mailto:agarwalmuskan884@gmail.com" class="btn">Send a mail</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> · Designed for Muskan Agarwal · Software Quality Engineer
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Theme toggle (emoji only)
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      root.classList.add("light");
+      themeToggle.textContent = "☀️";
+    }
+    themeToggle.addEventListener("click", () => {
+      root.classList.toggle("light");
+      const isLight = root.classList.contains("light");
+      themeToggle.textContent = isLight ? "☀️" : "🌙";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+
+    // Typewriter
+    const typingElement = document.getElementById("typingText");
+    const typingTexts = [
+      "Software Quality Engineer · Manual · Automation · API Testing",
+      "Framework design with Java · Selenium · TestNG · Playwright · Appium",
+      "SQL & MongoDB for backend and database validation",
+      "Performance testing with JMeter · Monitoring with Kibana & RabbitMQ flows"
+    ];
+    let textIndex = 0, charIndex = 0, isDeleting = false;
+    function type() {
+      const currentText = typingTexts[textIndex];
+      if (!isDeleting) {
+        charIndex++;
+        typingElement.textContent = currentText.slice(0, charIndex);
+        if (charIndex === currentText.length) {
+          isDeleting = true;
+          setTimeout(type, 1200);
+          return;
+        }
+      } else {
+        charIndex--;
+        typingElement.textContent = currentText.slice(0, charIndex);
+        if (charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % typingTexts.length;
+        }
+      }
+      setTimeout(type, isDeleting ? 40 : 70);
+    }
+    type();
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+    function handleReveal() {
+      const triggerBottom = window.innerHeight * 0.85;
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < triggerBottom) el.classList.add("visible");
+      });
+    }
+    window.addEventListener("scroll", handleReveal);
+    window.addEventListener("load", handleReveal);
+  </script>
+</body>
+</html>

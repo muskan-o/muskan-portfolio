@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Skills | Muskan Agarwal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+    }
+    :root.light {
+      --bg: #f3f4f6;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #0b1220, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    :root.light body {
+      background: #f3f4f6;
+    }
+    a { text-decoration: none; color: inherit; }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-size: 14px;
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 2px;
+      white-space: nowrap;
+    }
+    nav a.basic-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #a855f7);
+      transition: width 0.2s ease-out;
+    }
+    nav a.basic-link:hover::after { width: 100%; }
+
+    .nav-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 13px;
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+      transition: 0.2s;
+    }
+    :root.light .nav-pill { background: #ffffff; }
+    .nav-pill:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    :root.light .theme-toggle { background: #ffffff; }
+
+    .section-heading {
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .section-body {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 14px 14px 16px;
+      font-size: 13px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .card-meta {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .card-body {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    ul {
+      padding-left: 16px;
+      margin-top: 4px;
+    }
+    li { margin-bottom: 3px; }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+    :root.light .tag { background: #f9fafb; }
+
+    footer {
+      margin-top: 36px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Muskan Agarwal · Skills</div>
+      <nav>
+        <a href="index.html" class="basic-link">Home</a>
+        <a href="skills.html" class="basic-link">Skills</a>
+        <a href="projects.html" class="basic-link">Projects</a>
+        <a href="MUSKANAGARWAL-RESUME.pdf"
+           target="_blank"
+           class="nav-pill">
+          📄 Resume
+        </a>
+        <button class="theme-toggle" id="themeToggle" type="button">
+          Theme
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-heading">Skills</div>
+        <div class="section-title">Testing toolkit</div>
+        <p class="section-body">
+          A mix of manual, automation, API, database and performance testing skills – plus
+          tools for messaging, monitoring and Agile collaboration.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Core Testing & Test Design</div>
+              <div class="card-meta">Foundations</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Manual testing – functional, UI, regression, smoke, sanity</li>
+                <li>Test case design: boundary, equivalence, exploratory</li>
+                <li>Requirement analysis & traceability to test cases</li>
+                <li>Defect life cycle, defect triage & prioritization</li>
+                <li>End-to-end flows for web & mobile apps</li>
+              </ul>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Test Case Design</span>
+              <span class="tag">Regression</span>
+              <span class="tag">Exploratory</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Automation & Framework Design</div>
+              <div class="card-meta">Java · Selenium · Playwright · Appium</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Java – OOP, collections, exceptions for test automation</li>
+                <li>Selenium WebDriver for web UI automation</li>
+                <li>Playwright for fast, reliable web automation</li>
+                <li>Appium for Android mobile automation</li>
+                <li>Framework design: POM, Page Factory, utilities, reporting</li>
+                <li>TestNG: suites, groups, parallel runs, listeners</li>
+              </ul>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Java</span>
+              <span class="tag">Selenium</span>
+              <span class="tag">Playwright</span>
+              <span class="tag">Appium</span>
+              <span class="tag">TestNG</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">API, Backend & Database</div>
+              <div class="card-meta">Postman · SQL · MongoDB</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>REST API testing with Postman</li>
+                <li>Validating status codes, headers & JSON/XML bodies</li>
+                <li>Working with tokens, headers & environment configs</li>
+                <li>SQL – joins, filters, aggregations, data validation</li>
+                <li>MongoDB – CRUD and document level checks</li>
+              </ul>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Postman</span>
+              <span class="tag">REST</span>
+              <span class="tag">SQL</span>
+              <span class="tag">MongoDB</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Performance, Messaging & Monitoring</div>
+              <div class="card-meta">JMeter · RabbitMQ · Kibana · Jira</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Performance testing with JMeter – load, stress, basic analysis</li>
+                <li>Creating thread groups, listeners, assertions & simple reports</li>
+                <li>RabbitMQ: queues, message flow verification</li>
+                <li>Kibana: log analysis, error tracing, simple dashboards</li>
+                <li>Agile / Scrum collaboration using Jira</li>
+                <li>Version control with Git & GitHub</li>
+              </ul>
+            </div>
+            <div class="tag-row">
+              <span class="tag">JMeter</span>
+              <span class="tag">RabbitMQ</span>
+              <span class="tag">Kibana</span>
+              <span class="tag">Jira</span>
+              <span class="tag">Git · GitHub</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> · Skills · Muskan Agarwal
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") root.classList.add("light");
+    themeToggle.addEventListener("click", () => {
+      root.classList.toggle("light");
+      localStorage.setItem("theme", root.classList.contains("light") ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>
